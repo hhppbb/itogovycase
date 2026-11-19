@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ALPHA 3: SAVE OUR FACTORY! — Дело № 001</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;700&family=PT+Mono&display=swap" media="print" onload="this.media='all'">
+<style>
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;color:#4a1f35;font-family:"PT Mono","Courier New",monospace}
+body{background:repeating-linear-gradient(90deg,#ffd0e3 0 44px,#ffe8f1 44px 88px);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom)}
+#top{position:sticky;top:0;z-index:5;display:flex;align-items:center;gap:10px;padding:10px 14px;background:#fff0f6ee;border-bottom:2px solid #f3a6c8;font-size:12px}
+#bar{flex:1;height:8px;background:#ffd0e3;border-radius:4px;overflow:hidden}
+#bar i{display:block;height:100%;width:0;background:#e0207a;transition:width .5s}
+button{font:inherit;cursor:pointer}
+#mus{background:#fff;border:2px solid #e0207a;color:#c2185b;border-radius:14px;padding:3px 10px}
+main{max-width:760px;margin:0 auto;padding:26px 14px 110px}
+.paper{position:relative;background:linear-gradient(118deg,transparent 46%,#f8c9de66 46.4%,transparent 47%),linear-gradient(62deg,transparent 70%,#f8c9de55 70.4%,transparent 71%),#fff4f9;color:#4a1f35;padding:24px 20px 28px;margin:14px 0 18px;border-radius:4px 14px 4px 4px;border:2px solid #f3a6c8;border-left:8px solid #e0207a;box-shadow:0 8px 22px #c2185b33;font-size:15px;line-height:1.55}
+.paper:nth-child(odd){transform:rotate(-.4deg)}.paper:nth-child(even){transform:rotate(.3deg)}
+.paper:before{content:"";position:absolute;top:-12px;left:26px;width:16px;height:34px;border:3px solid #e58fb8;border-radius:9px;transform:rotate(-8deg)}
+.paper:after{content:"";position:absolute;right:16px;bottom:14px;width:64px;height:84px;border-radius:50%/55%;background:repeating-radial-gradient(ellipse at 50% 58%,transparent 0 3px,#f08fb9 3px 4.5px);opacity:.4;pointer-events:none}
+.tab{position:absolute;top:-30px;right:18px;background:#e0207a;color:#fff;font:700 13px Oswald,sans-serif;letter-spacing:.1em;padding:6px 14px 4px;border-radius:10px 10px 0 0}
+h1,h2{font-family:Oswald,Impact,sans-serif;text-transform:uppercase;margin:0 0 6px;line-height:1.1}
+h1{font-size:44px;color:#d81b72}h2{font-size:27px;color:#b3125e}
+.sub{color:#9b4a72;font-size:13px;letter-spacing:.06em;margin:0 0 12px}
+.stamp{display:inline-block;border:3px solid #d81b72;color:#d81b72;font:700 17px Oswald,sans-serif;letter-spacing:.1em;padding:2px 10px;margin-bottom:12px;border-radius:4px;transform:rotate(-6deg);animation:st .5s .3s both}
+@keyframes st{from{opacity:0;transform:scale(2.4) rotate(-14deg)}to{opacity:.9;transform:scale(1) rotate(-6deg)}}
+.big{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:10px 0}
+.big div{border:2px dashed #e58fb8;background:#ffe9f2;padding:10px;border-radius:8px}
+.big b{display:block;font:700 27px Oswald,sans-serif;color:#d81b72}
+.big span{font-size:12px}
+ul{margin:8px 0;padding-left:20px}li{margin:4px 0}
+.letter{font-style:italic;border-left:4px solid #e0207a;padding-left:12px;margin:12px 0;min-height:3em;background:#ffeef5}
+.task{background:#ffe0ee;border:2px dashed #d81b72;border-radius:8px;padding:12px 14px;margin-top:14px}
+.task h3{margin:0 0 6px;font:700 15px Oswald,sans-serif;letter-spacing:.08em;color:#b3125e}
+.q{margin-top:14px;font-weight:700;background:#d81b72;color:#fff;padding:10px 12px;border-radius:8px}
+.red{color:#d81b72;font-weight:700}
+#nav{position:fixed;left:0;right:0;bottom:0;display:flex;gap:10px;justify-content:center;padding:12px 14px calc(12px + env(safe-area-inset-bottom));background:#fff0f6f2;border-top:2px solid #f3a6c8}
+#nav button{flex:1;max-width:260px;padding:13px;background:#e0207a;color:#fff;border:0;border-radius:24px;font-size:15px}
+#nav button[disabled]{opacity:.35}
+#nav #prev{background:#f09bc2}
+#intro{position:fixed;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px;padding:24px;background:repeating-linear-gradient(90deg,#ffd0e3 0 44px,#ffe8f1 44px 88px)}
+#intro button{background:#e0207a;color:#fff;border:0;padding:15px 30px;font:700 18px Oswald,sans-serif;letter-spacing:.1em;border-radius:30px;box-shadow:0 6px 16px #c2185b55}
+#intro p{color:#7a2a50;font-size:13px;max-width:340px}
+.red-act{background:#e0207a;color:#e0207a;cursor:pointer;border-radius:3px;padding:0 4px;transition:.4s}.red-act.on{background:#ffd0e3;color:#4a1f35}
+.nw{filter:drop-shadow(0 6px 7px #c2185b66);max-width:320px;margin:18px auto}
+.note{cursor:pointer;padding:44px 30px;text-align:center;background:linear-gradient(115deg,#ffd9e8 0 30%,#ffc2da 31% 33%,#ffe6f0 34% 60%,#ffb8d3 61% 62%,#ffdcea 63%);clip-path:polygon(4% 8%,22% 0,40% 6%,62% 0,86% 7%,100% 22%,94% 48%,100% 72%,88% 96%,62% 100%,38% 94%,14% 100%,0 80%,5% 52%,0 28%);transition:clip-path .8s,padding .8s}
+.note b{display:block;font:700 15px Oswald,sans-serif;color:#b3125e;letter-spacing:.05em}
+.note i{font-size:11px;color:#9b4a72}.note span{display:block;max-height:0;opacity:0;overflow:hidden;font-size:15px;transition:.6s .4s}
+.note.open{clip-path:polygon(0 0,25% 0,50% 0,75% 0,100% 0,100% 25%,100% 50%,100% 75%,100% 100%,75% 100%,50% 100%,25% 100%,0 100%,0 75%,0 50%)}
+.note.open span{max-height:200px;opacity:1;margin-top:10px}.note.open i{display:none}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0}
+.cd{background:#fff;border:2px solid #f3a6c8;border-radius:10px;padding:9px;font-size:13px;transform:rotate(var(--r))}
+.cd[data-m]:before{content:attr(data-m);font-weight:700}
+.cd div{display:flex;gap:6px;margin-top:7px}
+.cd button{flex:1;border:2px solid #e0207a;background:#fff;color:#c2185b;border-radius:14px;font-size:11px;padding:5px 2px}
+.cd button.on{background:#e0207a;color:#fff}
+.cd.ok{background:#e7f1ff;border-color:#2e6fd1}.cd.bad{background:#fff0d6;border-color:#e08a00;animation:sh .4s}
+@keyframes sh{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.chk{display:block;margin:12px auto 0;background:#e0207a;color:#fff;border:0;border-radius:24px;padding:12px 22px;font:700 15px Oswald,sans-serif;letter-spacing:.08em}
+#res{margin-top:10px;font-size:14px}
+.tb{width:100%;border-collapse:collapse;margin:10px 0;font-size:13px}.tb th{background:#e0207a;color:#fff;text-align:left;padding:6px 8px}.tb td{border:1px solid #f3a6c8;padding:6px 8px;background:#fff}
+.ch button{display:block;width:100%;text-align:left;margin:7px 0;padding:11px;border:2px solid #e0207a;background:#fff;color:#4a1f35;border-radius:12px;font-size:14px}.ch button.on{background:#e0207a;color:#fff}
+#chr{background:#ffe0ee;border-radius:8px;padding:10px;min-height:2.6em;font-size:14px}
+@media(min-width:1100px){.tb,.ch button,#chr{font-size:19px}.cards{grid-template-columns:repeat(3,1fr)}.cd{font-size:18px}.nw{max-width:460px}.note span{font-size:20px}main{max-width:1180px}.paper{font-size:22px;padding:34px 34px 40px}h1{font-size:76px}h2{font-size:44px}.sub{font-size:18px}.stamp{font-size:24px}.big b{font-size:46px}.big span{font-size:17px}.task h3{font-size:20px}#top{font-size:16px}}
+@media(prefers-reduced-motion:reduce){.stamp{animation:none}}
+html,body{overflow-x:hidden}
+main{position:relative;z-index:1}
+#nav{z-index:5}
+#rain{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.st{position:absolute;pointer-events:none;filter:drop-shadow(0 3px 3px #c2185b55);animation:bob var(--d,5s) ease-in-out infinite alternate;transform:rotate(var(--r,0deg))}
+@keyframes bob{from{transform:rotate(var(--r,0deg)) translateY(0)}to{transform:rotate(calc(var(--r,0deg) + 6deg)) translateY(-7px)}}
+.o *{fill:#fff!important;stroke:#fff!important;stroke-width:8!important;stroke-linejoin:round;stroke-dasharray:none!important}
+.rn{position:absolute;top:0;opacity:.85;animation:fall var(--d) linear infinite;animation-delay:var(--dl)}
+@keyframes fall{from{transform:translate(0,-60px) rotate(0)}to{transform:translate(var(--sw),calc(100vh + 80px)) rotate(360deg)}}
+#intro>*:not(.st){position:relative;z-index:1}
+@media(prefers-reduced-motion:reduce){.st,.rn{animation:none}}
+
+/* ===== фикс плашек: текст всегда помещается ===== */
+.paper,.paper *{overflow-wrap:break-word;word-wrap:break-word}
+.paper{min-width:0}
+h1,h2{hyphens:auto;-webkit-hyphens:auto}
+.paper:after{pointer-events:none;z-index:0}
+/* скомканная записка */
+.nw{max-width:min(100%,340px);width:100%}
+.note{padding:56px 38px;min-height:150px}
+.note b{font-size:clamp(14px,4vw,16px);line-height:1.25}
+.note i{display:block;margin-top:8px}
+.note span{font-size:clamp(14px,4vw,15px);line-height:1.5}
+.note.open{padding:30px 22px 34px}
+.note.open span{max-height:1200px;overflow:visible;margin-top:12px}
+/* плашки-карточки сортировки */
+.cards{grid-template-columns:repeat(2,minmax(0,1fr))}
+.cd{min-width:0}
+.cd b{display:block;line-height:1.25}
+.cd div{flex-wrap:wrap}
+.cd button{flex:1 1 auto;min-width:0;white-space:normal;line-height:1.2;padding:6px 6px}
+@media(max-width:480px){.cards{gap:8px}.cd{padding:7px;font-size:12px}.cd b{hyphens:auto;-webkit-hyphens:auto;overflow-wrap:normal;word-break:normal}.cd div{flex-direction:column;gap:5px}.cd button{font-size:12px;padding:7px 4px}}
+/* плашки со статистикой, задания, вопросы */
+.big{grid-template-columns:repeat(2,minmax(0,1fr))}
+.big div{min-width:0}
+.big b{font-size:clamp(20px,7vw,27px);line-height:1.1}
+@media(max-width:340px){.big{grid-template-columns:minmax(0,1fr)}h1{font-size:34px}h2{font-size:22px}}
+.task,.q,.letter,#chr{min-width:0}
+.q{line-height:1.45}
+.red-act{-webkit-box-decoration-break:clone;box-decoration-break:clone;padding:1px 4px;line-height:1.7}
+.ch button{white-space:normal;line-height:1.35}
+.tb{table-layout:auto}.tb th,.tb td{overflow-wrap:anywhere;vertical-align:top}
+@media(max-width:480px){.tb{font-size:12px}.tb th,.tb td{padding:5px 6px}}
+@media(min-width:1100px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}.nw{max-width:480px}.note.open span{font-size:20px}}
+
+/* видео на заставке */
+#intro{overflow:hidden;justify-content:safe center}
+@media(max-height:480px){#intro{overflow-y:auto}.vid{max-height:42vh}}
+.vid{position:relative;width:min(88vw,420px);max-height:34vh;aspect-ratio:634/480;background:#2a0f1e;border:4px solid #e0207a;border-radius:10px;box-shadow:0 8px 22px #c2185b66;transform:rotate(-1deg);overflow:hidden;flex:none}
+.vid video{display:block;width:100%;height:100%;object-fit:contain;background:#2a0f1e}
+#intro .vid button{position:absolute;right:6px;bottom:6px;padding:5px 11px;font:700 12px Oswald,sans-serif;letter-spacing:.06em;border-radius:14px;background:#ffffffe6;color:#c2185b;border:2px solid #e0207a;box-shadow:none}
+@media(max-height:620px){#intro h1{font-size:40px!important}.vid{max-height:30vh}}
+@media(min-width:1100px){.vid{width:520px;max-height:40vh}}
+</style>
+</head>
+<body>
+<div id="intro">
+  <div class="stamp" >СЕКРЕТНО</div>
+  <h1 style="font-size:56px">ALPHA 3</h1>
+  <h2>Save our factory!</h2>
+  <div class="vid"><video id="introv" src="intro.mp4" autoplay muted loop playsinline preload="auto"></video><button id="vsnd" type="button">🔊 включить звук</button></div>
+  <p>Дело № 001. Тайна трёх подписей. Для авторизованных консультантов. Включите звук: нас ждёт расследование в розовых тонах.</p>
+  <button id="go">ОТКРЫТЬ ДЕЛО</button>
+</div>
+<div id="top"><span id="cnt">ДЕЛО 1/18</span><div id="bar"><i></i></div><button id="mus" title="Музыка">♪ вкл</button></div>
+<main id="app"></main>
+<div id="nav"><button id="prev">← Назад</button><button id="next">Далее →</button></div>
+
+<script>
+const S=[
+{h:"ALPHA 3",sub:"Дело № 001. Тайна трёх подписей",stamp:"СЕКРЕТНО",t:"У предприятия есть 30 дней. Заказы есть, оборудование есть, склад забит. Но денег не хватает, производство останавливается, а покупатели теряют терпение. Кто допустил ошибку? И можно ли ещё спасти завод?",q:"Архив ALPHA 3. Доступ только для приглашённых консультантов."},
+{h:"Шесть лет назад",sub:"Из архива компании · история основания",stamp:"АРХИВ",t:"Трое друзей открыли своё дело. Капитала и громких имён не было: маленький цех, один подержанный станок и огромное желание. Так появилась ALPHA 3.",list:["<b>Собственник № 1 — производство:</b> оборудование, мощности, выполнение заказов.","<b>Собственник № 2 — закупки и склад:</b> поставщики, материалы, запасы.","<b>Собственник № 3 — финансы и договоры:</b> деньги, расчёты с покупателями, кредиты."],letter:"На стене цеха висел плакат: «Через пять лет — крупнейший завод региона!» Кто-то карандашом дописал внизу: «И личный вертолёт собственникам». Тогда все смеялись. Сейчас уже не до смеха."},
+{h:"Золотые годы",sub:"Выдержка из корпоративного архива",stamp:"ПОЧТИ ИДЕАЛЬНО",t:"Мощности росли, заказы сыпались, склады наполнялись. Но вместе с ростом изменилось управление: решения принимались быстрее, проверки откладывались, документы подписывали без обсуждения. Запись с собрания:",letter:"«Есть деньги — покупаем оборудование. Есть скидка — закупаем материалы. Есть заказ — берёмся за работу. Разберёмся по ходу».",q:"Нажмите на плашку: последняя строка записи сделана другим почерком. "+"<span class=red-act>«Когда-нибудь это закончится проблемами». Автор неизвестен.</span>"},
+{h:"Последние шесть месяцев",sub:"Внутренний отчёт ALPHA 3",stamp:"КРИЗИС",list:["Мощности перестали соответствовать реальным потребностям.","На складе материалы, которые не используются, и при этом дефицит комплектующих.","Готовая продукция лежит и не превращается в деньги.","Денег не хватает на текущие обязательства.","Сотрудники получают противоречивые распоряжения от разных собственников."],q:"Из отчёта финансового отдела: «Компания продолжает работать, но её ресурсы используются всё менее эффективно»."},
+{h:"Ночное сообщение",sub:"Обнаружено в архиве",stamp:"ОБНАРУЖЕНО",big:[["23:47","восстановлен неизвестный файл"],["3 мес.","назад изменён"]],t:"THREE_SIGNATURES_FINAL.pdf. Отправитель не установлен. Получатели: три собственника ALPHA 3. Файл восстановлен частично.",letter:"«Если вы читаете это письмо, значит, ситуация стала достаточно серьёзной, чтобы наконец обратить на неё внимание»."},
+{h:"Письмо без имени",sub:"Фрагмент № 001 · конфиденциально",stamp:"КОНФИДЕНЦИАЛЬНО",letter:"«Вы уверены, что знаете, почему ваше предприятие оказалось в таком положении? В документах всё благополучно: оборудование на балансе, склад заполнен, заказы есть. Но почему производство останавливается? Почему готовая продукция лежит, а деньги не поступают? Возможно, проблема не в одном ошибочном решении. Возможно, проблема в трёх подписях».",t:"Примечание: в приложении упомянуты три решения трёх собственников. Каждое официально согласовано. Последствия никто не оценил в совокупности."},
+{h:"Три подписи",sub:"Фрагмент № 002 · письмо скомкано",stamp:"КОНФИДЕНЦИАЛЬНО",note:["Нажмите, чтобы развернуть листок","Один подписал продажу оборудования, которое до сих пор на балансе. Второй одобрил закупку, которая заморозила деньги на складе. Третий видел угрозу, но решил, что всё разрешится само. Начните с того, чего больше нет в цехе."],q:"У каждого решения была подпись. Но никто не подписывался под последствиями."},
+{h:"Вы приглашены",sub:"Ваша роль: независимые консультанты ALPHA 3",stamp:"ДОПУСК ВЫДАН",t:"Собственники больше не могут разобраться сами. Вам переданы документы, отчёты, договоры и переписка.",list:["Изучить имущество и ресурсы компании.","Выяснить, почему часть оборудования отсутствует.","Понять, почему склад полон, а производству не хватает.","Определить, почему готовая продукция не приносит денег.","Разработать план восстановления."],q:"Мало найти одного виновного. Нужно понять, как работала вся система."},
+{h:"Досье предприятия",sub:"ALPHA 3 · металлоконструкции и детали",stamp:"СРОЧНО",big:[["18 млн ₽","новый заказ"],["30 дней","до срока"],["4,8 млн ₽","долг покупателей"],["420 тыс. ₽","деньги на счёте"]],list:["Часть оборудования простаивает.","На складе избыточные материалы, не хватает комплектующих.","Готовая продукция не отгружена.","Скоро платёж по кредиту."],q:"Если порядок не восстановить, компания потеряет крупного покупателя."},
+{h:"Папка № 1. Имущество",sub:"Инвентаризационная ведомость. Не все записи подтверждены проверкой",stamp:"ТРЕБУЕТ ПРОВЕРКИ",t:"Основные фонды служат в деятельности долго. Оборотные средства расходуются, перерабатываются или продаются. Разложите карточки по двум папкам.",sort:1,task:["Почему заводу нужны обе группы ресурсов?"]},
+{h:"Первая несостыковка",sub:"Акт проверки основных средств · станок № 17",stamp:"НЕСООТВЕТСТВИЕ",tb:[["Показатель","В документах"],["Местонахождение","Цех № 2"],["Состояние","Исправен"],["Последняя проверка","6 месяцев назад"],["Использование","Включён в производственный план"]],t:"Сотрудники цеха: станка на территории нет. Найден договор купли-продажи. Дата сделки: "+"<span class=red-act>шесть месяцев назад</span>"+". Подписал: "+"<span class=red-act>один из собственников</span>"+". Деньги: "+"<span class=red-act>поступили на счёт</span>"+". Станок "+"<span class=red-act>вывезен</span>"+", а документы и план остались прежними.",q:"Как наличие станка в бумагах и отсутствие в цехе влияет на предприятие?"},
+{h:"Что стояло за продажей",sub:"Протокол собрания собственников",stamp:"РЕШЕНИЕ СОГЛАСОВАНО",letter:"«Продажа старого оборудования даст деньги. Станок используется не на полную мощность, продажа сократит расходы на обслуживание».",t:"В протоколе нет: пересмотра производственного плана, проверки потребности в станке, корректировки учёта, оценки влияния на будущие заказы.",c:["Было ли ошибкой само решение продать станок?",[["Да, продавать было нельзя","Спорно: простаивающее оборудование не всегда нужно. Проверьте, что именно не сделали после продажи."],["Продажа могла быть разумной, ошибкой стало отсутствие контроля","Ближе к делу: станок не сняли с плана, не обновили документы и не проверили будущие заказы."]]]},
+{h:"Новая покупка",sub:"Договор приобретения оборудования",stamp:"ЗАМОРОЖЕНО",big:[["1,5 млн ₽","новый станок: 800+250+150+100+200 тыс."],["20 дней","до запуска нового"],["350 тыс. ₽","ремонт старого"],["5 дней","срок ремонта"]],t:"Оборудование куплено, но не введено в эксплуатацию. Заказ надо выполнить через 30 дней.",c:["Что выбрать для срочного заказа?",[["Запустить новый станок","Дорого и долго: 20 дней из 30 уйдут на запуск. Но купленный станок нельзя бросать."],["Отремонтировать старый","Быстро и дёшево: экономия 1 150 000 ₽ и 15 дней. Риск: старая техника может снова сломаться."],["Совместить оба","Ремонт закрывает срок заказа, а новый станок вводят параллельно, чтобы он не стал замороженным капиталом."]]]},
+{h:"Склад хранит слишком много секретов",sub:"Внутренний отчёт склада",stamp:"ОБНАРУЖЕНО",list:["<b>Избыток:</b> много металла, купленного по скидке.","<b>Дефицит:</b> не хватает комплектующих для текущего заказа.","<b>Продукция:</b> изготовлена, но не отгружена, денег не принесла.","<b>Хранение:</b> часть материалов лежит слишком долго."],task:["Что оставить, что использовать первым, что продать?","Как ускорить отгрузку и не копить лишнее в будущем?"],q:"Пометка: «Склад должен помогать производству, а не превращаться в музей наших удачных закупок»."},
+{h:"Поставщик прислал новости",sub:"Входящее сообщение",stamp:"СРОЧНО",letter:"«Из-за нарушения графика производства сообщаем о задержке поставки комплектующих на 14 календарных дней. Новая дата будет подтверждена дополнительно».",list:["Заказ нужно выполнить через 30 дней.","Запасных комплектующих на складе нет.","Остановка может сорвать договор.","Покупатель уже недоволен задержками."],task:["Составьте план: альтернативный поставщик, срочная частичная партия, запасы, график.","Предусмотрите запасной вариант, если детали не придут и к новой дате."]},
+{h:"Покупатель выходит на связь",sub:"Письмо крупного заказчика",stamp:"ВХОДЯЩЕЕ",letter:"«Наша задолженность 4 800 000 рублей. Готовы досрочно перечислить 2 000 000 при скидке 5% и подтверждении графика поставок. Продукцию готовы забрать завтра».",t:"Посчитайте и нажмите на плашки, чтобы проверить себя. Скидка 5% с 2 000 000 ₽: "+"<span class=red-act>100 000 ₽</span>"+". Фактическое поступление: "+"<span class=red-act>1 900 000 ₽</span>"+".",task:["На каких условиях согласиться? Составьте план переговоров."]},
+{h:"Письмо, которое никто не заметил",sub:"Архив переписки · три недели назад",stamp:"АРХИВ",letter:"Покупатель: «Без подтверждённого графика поставок нам будет сложно согласовать досрочное перечисление». Ответ ALPHA 3: «Пока не можем назвать сроки. Вернёмся к вопросу позже».",list:["Подтверждения нет, досрочной оплаты нет.","Продукция осталась на складе, деньги не пришли.","Через три недели предложение вернулось уже со скидкой."],q:"Цепочка: проблема производства → задержка отгрузки → нет оплаты → ещё хуже финансы."},
+{h:"Банк напоминает о себе",sub:"Срочное уведомление",stamp:"СРОЧНО",big:[["900 тыс. ₽","платёж через 5 дней"],["420 тыс. ₽","деньги на счёте"],["480 тыс. ₽","не хватает"]],tb:[["Показатель","Сумма"],["Долги покупателей","4 800 000 ₽"],["Готовая продукция","3 200 000 ₽"],["Запасы материалов","5 600 000 ₽"]],t:"Материалы, продукция и долги покупателей ещё не свободные деньги: они вложены в запасы или ждут оплаты.",task:["Как получить деньги на срочные обязательства, не ограничиваясь новым кредитом?"]},
+{h:"Последнее предупреждение",sub:"Записка финансового директора · три месяца назад",stamp:"ПРИНЯТО К СВЕДЕНИЮ",letter:"«Растут запасы, которые не используются. Мощности загружены неравномерно. Покупатели платят всё позже. Деньги приходят позже, чем возникают обязательства. Есть риск кассового разрыва в ближайшие месяцы».",list:["Проверить основные средства и состояние оборудования.","Пересмотреть закупки и запасы.","Согласовывать закупки с потребностью производства.","Ускорить отгрузку и получение долгов.","Составить календарь поступлений и платежей."]},
+{h:"Совет собственников",sub:"Экстренное заседание. Решение нужно принять сегодня",stamp:"ЗАСЕДАНИЕ",c:["Выберите стратегию спасения предприятия.",[["№ 1. Быстрые деньги","Продать простаивающее оборудование и излишки, сократить расходы. Плюс: быстро появятся деньги. Риск: потерять нужные мощности."],["№ 2. Производство любой ценой","Закупить, загрузить станки, взять все заказы. Плюс: выпуск растёт. Риск: расходы обгонят поступления."],["№ 3. Системное восстановление","Проверить технику, согласовать закупки, отгрузить продукцию, наладить деньги. Плюс: учитывает всё предприятие. Риск: нужна согласованность и контроль."]]],q:"Какую выбрать, чтобы спасти не участок, а всё предприятие?"},
+{h:"Ваше решение",sub:"План спасения на 30 дней",stamp:"ГЛАВНОЕ ЗАДАНИЕ",list:["<b>Оборудование:</b> станок № 17, новый станок, ремонт, контроль имущества.","<b>Склад:</b> что сохранить, использовать, продать, как ускорить отгрузку.","<b>Производство:</b> заказ на 18 млн, загрузка, задержка комплектующих.","<b>Покупатели и поставщики:</b> скидка 5%, возврат долга, доверие.","<b>Финансы:</b> платёж по кредиту, источники денег, сокращение расходов."]},
+{h:"Условия спасения",sub:"Прежде чем представить решение",stamp:"УЧТИТЕ",list:["Нельзя решить всё только новым кредитом.","Нельзя увеличивать выпуск без комплектующих.","Нельзя закупать без реальной потребности.","Нельзя ждать оплату без согласованных сроков отгрузки.","Нельзя планировать загрузку, не проверив станки."],q:"Обязательно: три первоочередных действия, источники денег, последовательность восстановления, план с покупателями и поставщиками, резерв при задержке. Цель: не пережить пять дней, а восстановить устойчивую работу."},
+{h:"Последний документ",sub:"THREE_SIGNATURES_FINAL.pdf · доступ разрешён",stamp:"ДОСТУП РАЗРЕШЁН",t:"Отправитель: "+"<span class=red-act>бывший финансовый директор ALPHA 3</span>"+".",letter:"«Я не хотел навредить компании. Вы принимали решения по отдельности. Каждое казалось разумным, но никто не оценил, как они повлияют друг на друга. Продажа станка уменьшила возможности. Новое оборудование потребовало денег и времени. Закупка заморозила деньги в запасах. Покупатель не заплатил, не получив сроков. Когда пришёл срок платежа, денег не оказалось. Предприятие — это не отдельные станки, склады и счета. Это единая система».",q:"Кто виноват: один из собственников или отсутствие единого управления?"},
+{h:"Разгадка трёх подписей",sub:"Тайна раскрыта. Нажимайте на плашки",stamp:"ДЕЛО РАСКРЫТО",list:["<b>Первая подпись:</b> "+"<span class=red-act>продажа станка № 17 без пересмотра мощностей и учёта</span>"+".","<b>Вторая подпись:</b> "+"<span class=red-act>закупка по скидке, которая заморозила деньги в запасах</span>"+".","<b>Третья подпись:</b> "+"<span class=red-act>игнорирование предупреждения о кассовом разрыве</span>"+"."],q:"Ни одно решение не было единственной причиной. Причина в несогласованности производства, закупок, склада и финансов."},
+{h:"Дело закрыто?",sub:"ALPHA 3 · 30 дней спустя",stamp:"CASE CLOSED?",list:["Проведена проверка оборудования.","Пересмотрены запасы, согласованы закупки и график.","Продукция отгружена, часть долга получена.","Денежные потоки стали управляемыми."],t:"Завод продолжает работать. Дело закрыто. Пока что.",letter:"«Самая дорогая ошибка предприятия — не всегда неправильное решение. Иногда это правильное решение, принятое без учёта последствий для всей системы»."}
+];
+
+const app=document.getElementById("app"),bar=document.querySelector("#bar i"),cnt=document.getElementById("cnt");
+let i=0,tok=0;
+function render(n){
+  i=Math.max(0,Math.min(S.length-1,n));const d=S[i];tok++;pick={};const my=tok;
+  let h=`<section class="paper"><div class="tab">ДЕЛО № ${String(i+1).padStart(3,"0")}</div><div class="stamp">${d.stamp}</div>${i==0?"<h1>"+d.h+"</h1>":"<h2>"+d.h+"</h2>"}<p class="sub">${d.sub}</p>`;
+  if(d.t)h+=`<p>${d.t}</p>`;
+  if(d.note)h+=`<div class="nw"><div class="note"><b>${d.note[0]}</b><i>нажмите, чтобы развернуть</i><span>${d.note[1]}</span></div></div>`;
+  if(d.sort)h+=sortHTML();
+  if(d.tb)h+=`<table class="tb">${d.tb.map((r,k)=>"<tr>"+r.map(c=>(k?"<td>":"<th>")+c+(k?"</td>":"</th>")).join("")+"</tr>").join("")}</table>`;
+  if(d.c)h+=`<div class="ch"><p><b>${d.c[0]}</b></p>${d.c[1].map((o,k)=>`<button data-ch="${k}">${o[0]}</button>`).join("")}<p id="chr">Выберите вариант, чтобы увидеть последствия.</p></div>`;
+  if(d.big)h+=`<div class="big">${d.big.map(b=>`<div><b>${b[0]}</b><span>${b[1]}</span></div>`).join("")}</div>`;
+  if(d.list)h+=`<ul>${d.list.map(x=>`<li>${x}</li>`).join("")}</ul>`;
+  if(d.letter)h+=`<div class="letter" id="ty"></div>`;
+  if(d.task)h+=`<div class="task"><h3>ЗАДАНИЕ КОМАНДАМ</h3><ul>${d.task.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+  if(d.q)h+=`<div class="q">Вопрос расследования: ${d.q}</div>`;
+  app.innerHTML=h+"</section>";
+  window.scrollTo(0,0);try{decorate()}catch(e){console.error(e)}
+  bar.style.width=((i+1)/S.length*100)+"%";cnt.textContent="ДЕЛО "+(i+1)+"/"+S.length;
+  document.getElementById("prev").disabled=i==0;document.getElementById("next").disabled=i==S.length-1;
+  const ty=document.getElementById("ty");
+  if(ty){let k=0;const txt=d.letter;(function f(){if(my!=tok)return;k+=3;ty.textContent=txt.slice(0,k);if(k<txt.length)setTimeout(f,14);})();}
+}
+document.getElementById("next").onclick=()=>render(i+1);
+document.getElementById("prev").onclick=()=>render(i-1);
+addEventListener("keydown",e=>{if(e.key=="ArrowRight")render(i+1);if(e.key=="ArrowLeft")render(i-1)});
+let sx=0;addEventListener("touchstart",e=>sx=e.touches[0].clientX,{passive:true});
+addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>80)render(i+(dx<0?1:-1))},{passive:true});
+
+// ===== Музыка: три трека, склеенные в один (встроены в страницу) =====
+let on=false,bgm=null,muted=false;
+const mus=document.getElementById("mus");
+function buildAudio(){
+  if(bgm)return bgm;
+  bgm=document.createElement("audio");
+  bgm.src="music.mp3";bgm.loop=true;bgm.preload="auto";bgm.volume=.6;
+  bgm.setAttribute("playsinline","");
+  document.body.appendChild(bgm);
+  return bgm;
+}
+async function startMusic(){
+  muted=false;
+  try{const a=buildAudio();await a.play();on=true;mus.textContent="♪ вкл"}
+  catch(e){on=false;mus.textContent="♪ выкл"}
+}
+function stopMusic(){muted=true;if(bgm)bgm.pause();on=false;mus.textContent="♪ выкл"}
+mus.onclick=()=>on?stopMusic():startMusic();
+// если браузер не дал включить звук сразу — включаем при первом касании
+addEventListener("pointerdown",()=>{if(!on&&!muted&&!document.getElementById("intro"))startMusic()},{passive:true});
+document.addEventListener("visibilitychange",()=>{if(!bgm)return;if(document.hidden)bgm.pause();else if(on)bgm.play().catch(()=>{})});
+
+// ===== Персонажи-шпионы и падающие звёздочки =====
+const D="#8a1553",H="#e0207a",P="#ff6fa8",L="#ff8fbd",Y="#ffd23f",SK="#ffd9c2",DK="#2a0f1e";
+const st=(w)=>`stroke="${D}" stroke-width="${w}" stroke-linejoin="round"`;
+const body=c=>`<path d="M6 100C6 76 24 66 50 66S94 76 94 100Z" fill="${c}" ${st(4)}/>`;
+const head=`<circle cx="27" cy="42" r="4.5" fill="${SK}" ${st(3)}/><circle cx="73" cy="42" r="4.5" fill="${SK}" ${st(3)}/><circle cx="50" cy="40" r="22" fill="${SK}" ${st(4)}/><ellipse cx="50" cy="45" rx="3" ry="2.4" fill="#f4a98c"/>`;
+const smile=`<path d="M43 52Q50 57 57 52" fill="none" stroke="${D}" stroke-width="2.5" stroke-linecap="round"/>`;
+const collars=c=>`<path d="M24 76L33 50L50 78Z" fill="${c}" ${st(3)}/><path d="M76 76L67 50L50 78Z" fill="${c}" ${st(3)}/>`;
+const shades=`<rect x="30" y="33" width="17" height="11" rx="4.5" fill="${DK}"/><rect x="53" y="33" width="17" height="11" rx="4.5" fill="${DK}"/><path d="M47 37H53" stroke="${DK}" stroke-width="3"/><path d="M33 36H38M56 36H61" stroke="#fff" stroke-width="2" stroke-linecap="round"/>`;
+const fedora=c=>`<ellipse cx="50" cy="23" rx="34" ry="8" fill="${c}" ${st(4)}/><path d="M31 22C30 6 40 2 50 2S70 6 69 22Z" fill="${c}" ${st(4)}/><path d="M31 17Q50 21 69 17" stroke="${D}" stroke-width="6" fill="none"/>`;
+const eyes=`<circle cx="41" cy="38" r="3" fill="${DK}"/><circle cx="59" cy="38" r="3" fill="${DK}"/>`;
+const ST={
+// падающие
+star:`<path d="M50 6L62 38H96L68 58L79 92L50 71L21 92L32 58L4 38H38Z" fill="${Y}" ${st(4)}/>`,
+heart:`<path d="M50 88C8 58 6 30 28 20C40 15 50 24 50 32C50 24 60 15 72 20C94 30 92 58 50 88Z" fill="#ff4f9a" ${st(4)}/><path d="M26 32C28 26 34 24 38 26" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>`,
+spark:`<path d="M50 4C54 36 64 46 96 50C64 54 54 64 50 96C46 64 36 54 4 50C36 46 46 36 50 4Z" fill="#fff3a0" ${st(4)}/>`,
+// 1. агент в шляпе и тёмных очках
+a1:body(H)+head+smile+collars("#b3125e")+shades+fedora(P),
+// 2. агент с лупой
+a2:body("#6a3fa0")+head+eyes+`<path d="M34 30L46 32" stroke="${D}" stroke-width="3" stroke-linecap="round"/>`+smile+collars("#4a2a78")+`<circle cx="62" cy="40" r="15" fill="#bfe3ff" fill-opacity=".6" ${st(4)}/><path d="M72 51L86 68" stroke="${D}" stroke-width="10" stroke-linecap="round"/><path d="M72 51L86 68" stroke="${H}" stroke-width="5" stroke-linecap="round"/><circle cx="88" cy="71" r="6" fill="${SK}" ${st(3)}/><ellipse cx="48" cy="20" rx="28" ry="10" fill="${H}" ${st(4)}/><circle cx="50" cy="9" r="3" fill="${D}"/>`,
+// 3. агентка «тсс»
+a3:`<path d="M24 46C20 12 40 6 50 6S80 12 76 46C76 60 72 66 72 66H28C28 66 24 60 24 46Z" fill="${DK}" ${st(4)}/>`+body("#b3125e")+`<circle cx="50" cy="42" r="21" fill="${SK}" ${st(4)}/><path d="M29 40C31 18 69 14 71 40C62 28 40 28 29 40Z" fill="${DK}"/>`+collars("#8a1553")+`<path d="M30 38H48L46 46C44 49 34 49 32 46Z" fill="${H}" ${st(2.5)}/><path d="M52 38H70L68 46C66 49 56 49 54 46Z" fill="${H}" ${st(2.5)}/><path d="M48 40H52" stroke="${DK}" stroke-width="3"/><rect x="46.5" y="48" width="7" height="22" rx="3.5" fill="${SK}" ${st(3)}/><ellipse cx="50" cy="73" rx="10" ry="7" fill="${SK}" ${st(3)}/>`,
+// 4. агент с биноклем
+a4:body("#2e6fd1")+head+collars("#1d4a96")+`<rect x="44" y="35" width="12" height="7" fill="${DK}"/><circle cx="40" cy="39" r="11" fill="${DK}" ${st(3)}/><circle cx="60" cy="39" r="11" fill="${DK}" ${st(3)}/><circle cx="37" cy="36" r="3.5" fill="#fff"/><circle cx="57" cy="36" r="3.5" fill="#fff"/>`+fedora("#9b5de5"),
+// 5. шпион с газетой
+a5:body(H)+head+`<ellipse cx="41" cy="38" rx="6" ry="5" fill="#fff" ${st(2.5)}/><ellipse cx="59" cy="38" rx="6" ry="5" fill="#fff" ${st(2.5)}/><circle cx="43" cy="38" r="2.6" fill="${DK}"/><circle cx="61" cy="38" r="2.6" fill="${DK}"/><path d="M32 30L46 34M68 30L54 34" stroke="${D}" stroke-width="3.5" stroke-linecap="round"/><path d="M14 52H86V100H14Z" fill="#fffbe8" ${st(4)}/><path d="M24 64H76M24 74H76M24 84H58" stroke="#b79aa8" stroke-width="3.5" stroke-linecap="round"/>`+fedora(L),
+// 6. шпион в капюшоне
+a6:`<path d="M10 100C10 52 28 12 50 12S90 52 90 100Z" fill="#6a3fa0" ${st(4)}/><ellipse cx="50" cy="48" rx="20" ry="17" fill="${DK}"/><ellipse cx="42" cy="46" rx="5.5" ry="4.5" fill="#fff"/><ellipse cx="58" cy="46" rx="5.5" ry="4.5" fill="#fff"/><circle cx="43.5" cy="46" r="2.4" fill="${DK}"/><circle cx="59.5" cy="46" r="2.4" fill="${DK}"/><path d="M34 38L46 42M66 38L54 42" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M20 82Q50 96 80 82L82 95Q50 108 18 95Z" fill="${P}" ${st(3.5)}/>`
+};
+// какой агент на каком слайде
+const CH=[1,3,1,6,6,5,4,3,2,2,2,5,1,4,6,3,5,1,4,3,2,6,5,2,1];
+const svgOf=n=>`<svg viewBox="0 0 100 100" width="100%" height="100%" overflow="visible"><g class="o">${ST[n]}</g><g>${ST[n]}</g></svg>`;
+function rnd(a){return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function add(par,n,s,css,rr){
+  const d=document.createElement("div");d.className="st";
+  d.style.cssText=`width:${s}px;height:${s}px;${css};--r:${Math.round(rr()*16-8)}deg;--d:${(4+rr()*3).toFixed(1)}s`;
+  d.innerHTML=svgOf(n);par.appendChild(d);
+}
+const scale=()=>innerWidth>=1100?1.5:innerWidth<640?.85:1;
+function decorate(){
+  const paper=app.querySelector(".paper");if(!paper)return;
+  const rr=rnd(i*977+13),s=Math.round(96*scale()),side=i%2?`left:${(3+rr()*14).toFixed(1)}%`:`right:${(3+rr()*14).toFixed(1)}%`;
+  add(paper,"a"+(CH[i]||1),s,`bottom:${(-s*.68).toFixed(0)}px;${side}`,rr);
+}
+try{
+  // падающие звёздочки и сердечки на заднем плане
+  const rain=document.createElement("div");rain.id="rain";document.body.prepend(rain);
+  const rr=rnd(777),list=["star","heart","spark"],cnt=innerWidth<640?8:12;
+  for(let n=0;n<cnt;n++){
+    const d=document.createElement("div"),s=Math.round(20+rr()*18);d.className="rn";
+    d.style.cssText=`left:${(rr()*100).toFixed(1)}vw;width:${s}px;height:${s}px;--d:${(14+rr()*16).toFixed(1)}s;--dl:-${(rr()*24).toFixed(1)}s;--sw:${Math.round(rr()*120-60)}px`;
+    d.innerHTML=svgOf(list[n%3]);rain.appendChild(d);
+  }
+  // два агента на заставке
+  const intro=document.getElementById("intro"),s=Math.round(130*scale());
+  add(intro,"a1",s,`left:4%;bottom:${(-s*.3).toFixed(0)}px`,rnd(3));
+  add(intro,"a3",s,`right:4%;bottom:${(-s*.3).toFixed(0)}px`,rnd(4));
+}catch(e){console.error(e)}
+
+let pick={};
+const CARDS=[["Токарный станок","F"],["Металлические листы","W"],["Погрузчик","F"],["Запасные детали","W"],["Производственное здание","F"],["Готовая продукция","W"],["Инструмент длительного использования","F"],["Топливо","W"],["Станок № 17 (по документам)","F"]];
+function sortHTML(){return `<div class="cards">`+CARDS.map((c,k)=>`<div class="cd" id="c${k}" style="--r:${(k%3-1)*.8}deg"><b>${c[0]}</b><div><button data-k="${k}" data-v="F">Основные</button><button data-k="${k}" data-v="W">Оборотные</button></div></div>`).join("")+`</div><button id="chk" class="chk">ПРОВЕРИТЬ ДОСЬЕ</button><p id="res"></p>`}
+app.addEventListener("click",e=>{const t=e.target;
+  if(t.classList.contains("red-act"))t.classList.toggle("on");
+  if(t.dataset&&t.dataset.ch!==undefined){const o=S[i].c[1][t.dataset.ch];[...t.parentNode.querySelectorAll("button")].forEach(b=>b.classList.toggle("on",b==t));document.getElementById("chr").innerHTML=o[1]}
+  const n=t.closest(".note");if(n)n.classList.add("open");
+  if(t.dataset&&t.dataset.v){pick[t.dataset.k]=t.dataset.v;[...t.parentNode.children].forEach(b=>b.classList.toggle("on",b==t))}
+  if(t.id=="chk"){let r=0;CARDS.forEach((c,k)=>{const el=document.getElementById("c"+k);el.classList.remove("ok","bad");if(pick[k]){const g=pick[k]==c[1];r+=g;el.classList.add(g?"ok":"bad");el.dataset.m=g?"✓ ":"✕ "}});
+    document.getElementById("res").innerHTML="Верно: <b>"+r+" из "+CARDS.length+"</b>. Но посмотрите на последнюю карточку: станок № 17 по документам стоит в цехе № 2, а сотрудники его не видели. Это первая зацепка."}
+});
+(function(){const v=document.getElementById("introv"),b=document.getElementById("vsnd");if(!v||!b)return;
+  b.onclick=e=>{e.stopPropagation();v.muted=!v.muted;if(!v.muted)v.volume=.8;b.textContent=v.muted?"🔊 включить звук":"🔇 выключить звук";v.play().catch(()=>{})}})();
+document.getElementById("go").onclick=()=>{try{document.getElementById("introv").pause()}catch(e){}document.getElementById("intro").remove();render(0);try{startMusic()}catch(e){}};
+mus.textContent="♪ выкл";
+render(0);
+</script>
+</body>
+</html>
